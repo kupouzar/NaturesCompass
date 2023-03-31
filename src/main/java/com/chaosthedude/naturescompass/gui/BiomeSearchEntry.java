@@ -16,6 +16,7 @@ import net.minecraft.client.util.math.MatrixStack;
 import net.minecraft.sound.SoundEvents;
 import net.minecraft.text.Text;
 import net.minecraft.util.Util;
+import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.biome.Biome;
 import net.minecraft.world.biome.Biome.Precipitation;
 
@@ -42,9 +43,9 @@ public class BiomeSearchEntry extends EntryListWidget.Entry<BiomeSearchEntry> {
 		if (parentScreen.getSortingCategory() instanceof NameSorting || parentScreen.getSortingCategory() instanceof SourceSorting || parentScreen.getSortingCategory() instanceof TagsSorting) {
 			title = I18n.translate("string.naturescompass.precipitation");
 			value = I18n.translate("string.naturescompass.none");
-			if (biome.getPrecipitation() == Precipitation.SNOW) {
+			if (biome.getTemperature() < 0.15) {
 				value = I18n.translate("string.naturescompass.snow");
-			} else if (biome.getPrecipitation() == Precipitation.RAIN) {
+			} else {
 				value = I18n.translate("string.naturescompass.rain");
 			}
 		}

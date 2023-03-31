@@ -58,7 +58,6 @@ public class RenderUtils {
 		final BufferBuilder buffer = tessellator.getBuffer();
 
 		RenderSystem.enableBlend();
-		RenderSystem.disableTexture();
 		RenderSystem.blendFuncSeparate(GlStateManager.SrcFactor.SRC_ALPHA, GlStateManager.DstFactor.ONE_MINUS_SRC_ALPHA, GlStateManager.SrcFactor.ONE, GlStateManager.DstFactor.ZERO);
 		RenderSystem.setShaderColor(red, green, blue, alpha);
 
@@ -68,8 +67,6 @@ public class RenderUtils {
 		buffer.vertex((double) right, (double) top, 0.0D).next();
 		buffer.vertex((double) left, (double) top, 0.0D).next();
 		tessellator.draw();
-
-		RenderSystem.enableTexture();
 		RenderSystem.disableBlend();
 	}
 

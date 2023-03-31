@@ -94,7 +94,7 @@ public class NaturesCompassScreen extends Screen {
 	@Override
 	public void render(MatrixStack stack, int mouseX, int mouseY, float partialTicks) {
 		renderBackground(stack);
-		drawCenteredText(stack, textRenderer, I18n.translate("string.naturescompass.selectBiome"), 65, 15, 0xffffff);
+		drawCenteredTextWithShadow(stack, textRenderer, I18n.translate("string.naturescompass.selectBiome"), 65, 15, 0xffffff);
 		super.render(stack, mouseX, mouseY, partialTicks);
 	}
 

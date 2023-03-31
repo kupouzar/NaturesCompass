@@ -10,7 +10,6 @@ import net.minecraft.client.resource.language.I18n;
 import net.minecraft.client.util.math.MatrixStack;
 import net.minecraft.text.Text;
 import net.minecraft.world.biome.Biome;
-import net.minecraft.world.biome.Biome.Precipitation;
 
 @Environment(EnvType.CLIENT)
 public class BiomeInfoScreen extends Screen {
@@ -35,13 +34,11 @@ public class BiomeInfoScreen extends Screen {
 		
 		tags = BiomeUtils.getBiomeTags(parentScreen.world, biome);
 
-		if (biome.getPrecipitation() == Precipitation.SNOW) {
+		if (biome.getTemperature() < 0.15) {
 			precipitation = I18n.translate("string.naturescompass.snow");
-		} else if (biome.getPrecipitation() == Precipitation.RAIN) {
-			precipitation = I18n.translate("string.naturescompass.rain");
 		} else {
-			precipitation = I18n.translate("string.naturescompass.none");
-		}
+			precipitation = I18n.translate("string.naturescompass.rain");
+		};
 		
 		if (biome.getTemperature() <= 0.5) {
 			temperature = I18n.translate("string.naturescompass.cold");
@@ -51,9 +48,10 @@ public class BiomeInfoScreen extends Screen {
 			temperature = I18n.translate("string.naturescompass.warm");
 		}
 
-		if (biome.getDownfall() <= 0) {
+		// TODO -  find a method of determining the intensity of rain
+		/*if (biome.getDownfall <= 0) {
 			rainfall = I18n.translate("string.naturescompass.none");
-		} else if (biome.getDownfall() < 0.2) {
+		} else if (biome. < 0.2) {
 			rainfall = I18n.translate("string.naturescompass.veryLow");
 		} else if (biome.getDownfall() < 0.3) {
 			rainfall = I18n.translate("string.naturescompass.low");
@@ -64,12 +62,17 @@ public class BiomeInfoScreen extends Screen {
 		} else {
 			rainfall = I18n.translate("string.naturescompass.veryHigh");
 		}
-		
-		if (biome.hasHighHumidity()) {
+		*/
+		rainfall = I18n.translate("string.naturescompass.none");
+
+		/*if (Biome.Weather::) {
 			highHumidity = I18n.translate("gui.yes");
 		} else {
 			highHumidity = I18n.translate("gui.no");
 		}
+		*/
+
+		highHumidity = I18n.translate("gui.no");
 	}
 
 	@Override
