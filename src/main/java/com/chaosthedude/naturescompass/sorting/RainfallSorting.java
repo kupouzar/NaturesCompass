@@ -15,9 +15,7 @@ public class RainfallSorting implements ISorting<Float> {
 
 	@Override
 	public Float getValue(Biome biome) {
-		// TODO - to be fixed!
-		float todo = 0;
-		return todo;
+		return biome.weather.downfall();
 	}
 
 	@Override

@@ -16,6 +16,7 @@ public class BiomeInfoScreen extends Screen {
 
 	private NaturesCompassScreen parentScreen;
 	private Biome biome;
+	private Biome.Weather weather;
 	private ButtonWidget searchButton;
 	private ButtonWidget backButton;
 	private String source;
@@ -29,50 +30,30 @@ public class BiomeInfoScreen extends Screen {
 		super(Text.translatable(BiomeUtils.getBiomeNameForDisplay(parentScreen.world, biome)));
 		this.parentScreen = parentScreen;
 		this.biome = biome;
+		this.weather = biome.weather;
 
 		source = BiomeUtils.getBiomeSource(parentScreen.world, biome);
 		
 		tags = BiomeUtils.getBiomeTags(parentScreen.world, biome);
 
-		if (biome.getTemperature() < 0.15) {
-			precipitation = I18n.translate("string.naturescompass.snow");
-		} else {
-			precipitation = I18n.translate("string.naturescompass.rain");
-		};
-		
-		if (biome.getTemperature() <= 0.5) {
-			temperature = I18n.translate("string.naturescompass.cold");
-		} else if (biome.getTemperature() <= 1.5) {
-			temperature = I18n.translate("string.naturescompass.medium");
-		} else {
-			temperature = I18n.translate("string.naturescompass.warm");
-		}
+		precipitation =
+				biome.getTemperature() < 0.15 ? I18n.translate("string.naturescompass.snow")
+						: I18n.translate("string.naturescompass.rain");
 
-		// TODO -  find a method of determining the intensity of rain
-		/*if (biome.getDownfall <= 0) {
-			rainfall = I18n.translate("string.naturescompass.none");
-		} else if (biome. < 0.2) {
-			rainfall = I18n.translate("string.naturescompass.veryLow");
-		} else if (biome.getDownfall() < 0.3) {
-			rainfall = I18n.translate("string.naturescompass.low");
-		} else if (biome.getDownfall() < 0.5) {
-			rainfall = I18n.translate("string.naturescompass.average");
-		} else if (biome.getDownfall() < 0.85) {
-			rainfall = I18n.translate("string.naturescompass.high");
-		} else {
-			rainfall = I18n.translate("string.naturescompass.veryHigh");
-		}
-		*/
-		rainfall = I18n.translate("string.naturescompass.none");
+		temperature =
+				biome.getTemperature() <= 0.5 ?
+				I18n.translate("string.naturescompass.cold") : biome.getTemperature() <= 1.5 ?
+				I18n.translate("string.naturescompass.medium") : I18n.translate("string.naturescompass.warm");
 
-		/*if (Biome.Weather::) {
-			highHumidity = I18n.translate("gui.yes");
-		} else {
-			highHumidity = I18n.translate("gui.no");
-		}
-		*/
+		rainfall =
+				weather.downfall() <= 0 ? I18n.translate("string.naturescompass.none") : weather.downfall() < 0.2 ?
+				I18n.translate("string.naturescompass.veryLow") : weather.downfall() < 0.3 ?
+				I18n.translate("string.naturescompass.low") : weather.downfall() < 0.5 ?
+				I18n.translate("string.naturescompass.average") : weather.downfall() < 0.85 ?
+				I18n.translate("string.naturescompass.high") :
+				I18n.translate("string.naturescompass.veryHigh");
 
-		highHumidity = I18n.translate("gui.no");
+		highHumidity = weather.downfall() > 0.85 ? I18n.translate("gui.yes") : I18n.translate("gui.no");
 	}
 
 	@Override

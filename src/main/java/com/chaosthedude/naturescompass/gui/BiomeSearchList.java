@@ -79,11 +79,11 @@ public class BiomeSearchList extends EntryListWidget<BiomeSearchEntry> {
 		}
 	}
 
-	/*
-	private int getRowBottom(int p_getRowBottom_1_) {
+
+	public int getRowBottom(int p_getRowBottom_1_) {
 		return this.getRowTop(p_getRowBottom_1_) + this.itemHeight;
 	}
-	*/
+
 
 	public void refreshList() {
 		clearEntries();
