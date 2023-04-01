@@ -8,24 +8,24 @@ import net.minecraft.world.biome.Biome;
 @Environment(EnvType.CLIENT)
 public class TemperatureSorting implements ISorting<Float> {
 
-	@Override
-	public int compare(Biome biome1, Biome biome2) {
-		return getValue(biome1).compareTo(getValue(biome2));
-	}
+    @Override
+    public int compare(Biome biome1, Biome biome2) {
+        return getValue(biome1).compareTo(getValue(biome2));
+    }
 
-	@Override
-	public Float getValue(Biome biome) {
-		return biome.getTemperature();
-	}
+    @Override
+    public Float getValue(Biome biome) {
+        return biome.getTemperature();
+    }
 
-	@Override
-	public ISorting<?> next() {
-		return new NameSorting();
-	}
+    @Override
+    public ISorting<?> next() {
+        return new NameSorting();
+    }
 
-	@Override
-	public String getLocalizedName() {
-		return I18n.translate("string.naturescompass.temperature");
-	}
+    @Override
+    public String getLocalizedName() {
+        return I18n.translate("string.naturescompass.temperature");
+    }
 
 }

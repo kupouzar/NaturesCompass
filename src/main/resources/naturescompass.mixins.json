@@ -6,8 +6,8 @@
     "ServerMixin"
   ],
   "client": [
-    "HUDMixin",
-    "HeldItemRendererMixin"
+    "HeldItemRendererMixin",
+    "HUDMixin"
   ],
   "injectors": {
     "defaultRequire": 1

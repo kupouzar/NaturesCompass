@@ -1,7 +1,6 @@
 package com.chaosthedude.naturescompass.sorting;
 
 import com.chaosthedude.naturescompass.utils.BiomeUtils;
-
 import net.fabricmc.api.EnvType;
 import net.fabricmc.api.Environment;
 import net.minecraft.client.MinecraftClient;
@@ -10,30 +9,30 @@ import net.minecraft.world.biome.Biome;
 
 @Environment(EnvType.CLIENT)
 public class NameSorting implements ISorting<String> {
-	
-	private static final MinecraftClient client = MinecraftClient.getInstance();
 
-	@Override
-	public int compare(Biome biome1, Biome biome2) {
-		return getValue(biome1).compareTo(getValue(biome2));
-	}
+    private static final MinecraftClient client = MinecraftClient.getInstance();
 
-	@Override
-	public String getValue(Biome biome) {
-		if (client.world != null) {
-			return BiomeUtils.getBiomeName(client.world, biome);
-		}
-		return "";
-	}
+    @Override
+    public int compare(Biome biome1, Biome biome2) {
+        return getValue(biome1).compareTo(getValue(biome2));
+    }
 
-	@Override
-	public ISorting<?> next() {
-		return new SourceSorting();
-	}
+    @Override
+    public String getValue(Biome biome) {
+        if (client.world != null) {
+            return BiomeUtils.getBiomeName(client.world, biome);
+        }
+        return "";
+    }
 
-	@Override
-	public String getLocalizedName() {
-		return I18n.translate("string.naturescompass.name");
-	}
+    @Override
+    public ISorting<?> next() {
+        return new SourceSorting();
+    }
+
+    @Override
+    public String getLocalizedName() {
+        return I18n.translate("string.naturescompass.name");
+    }
 
 }
