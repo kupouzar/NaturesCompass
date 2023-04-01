@@ -8,24 +8,24 @@ import net.minecraft.world.biome.Biome;
 @Environment(EnvType.CLIENT)
 public class RainfallSorting implements ISorting<Float> {
 
-	@Override
-	public int compare(Biome biome1, Biome biome2) {
-		return getValue(biome1).compareTo(getValue(biome2));
-	}
+    @Override
+    public int compare(Biome biome1, Biome biome2) {
+        return getValue(biome1).compareTo(getValue(biome2));
+    }
 
-	@Override
-	public Float getValue(Biome biome) {
-		return biome.weather.downfall();
-	}
+    @Override
+    public Float getValue(Biome biome) {
+        return biome.weather.downfall();
+    }
 
-	@Override
-	public ISorting<?> next() {
-		return new TemperatureSorting();
-	}
+    @Override
+    public ISorting<?> next() {
+        return new TemperatureSorting();
+    }
 
-	@Override
-	public String getLocalizedName() {
-		return I18n.translate("string.naturescompass.rainfall");
-	}
+    @Override
+    public String getLocalizedName() {
+        return I18n.translate("string.naturescompass.rainfall");
+    }
 
 }

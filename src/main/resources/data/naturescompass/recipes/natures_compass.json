@@ -10,12 +10,12 @@
     "S": {
       "tag": "saplings"
     },
-    "L":{
+    "L": {
       "tag": "logs"
-	},
-	"C":{
+    },
+    "C": {
       "item": "minecraft:compass"
-	}
+    }
   },
   "result": {
     "item": "naturescompass:naturescompass"
